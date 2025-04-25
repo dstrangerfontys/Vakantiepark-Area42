@@ -7,4 +7,11 @@
     <RootNamespace>Vakantiepark_Area42</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Pages\Guest\" />
+    <Folder Include="Pages\Reservation\" />
+    <Folder Include="Pages\Room\" />
+  </ItemGroup>
+
 </Project>
