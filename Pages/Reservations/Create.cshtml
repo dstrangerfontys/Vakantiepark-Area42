@@ -1,0 +1,28 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Create Reservation";
+}
+
+<h1>Create Reservation</h1>
+
+<form method="post">
+    <div>
+        <label>Guest</label>
+        <select asp-for="Reservation.GuestId" asp-items="Model.GuestList"></select>
+    </div>
+    <div>
+        <label>Room</label>
+        <select asp-for="Reservation.RoomId" asp-items="Model.RoomList"></select>
+    </div>
+    <div>
+        <label>Check-In Date</label>
+        <input asp-for="Reservation.CheckInDate" type="date" />
+    </div>
+    <div>
+        <label>Check-Out Date</label>
+        <input asp-for="Reservation.CheckOutDate" type="date" />
+    </div>
+    <button type="submit">Book</button>
+</form>
+
