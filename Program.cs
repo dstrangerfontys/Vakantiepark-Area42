@@ -1,14 +1,15 @@
-using Vakantiepark_Area42.Data; // <-- voeg deze bovenaan toe
+using Vakantiepark_Area42.Data; 
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAuthorization();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<HotelContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
 var app = builder.Build();
 
