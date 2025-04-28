@@ -7,19 +7,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-<h1>Create Reservation</h1>
+
+<h1>Reserveren</h1>
 
 <form method="post">
     <partial name="_ValidationSummary" />
 
-    <h2>Guest Information</h2>
+    <h2>Persoonlijke Informatie</h2>
     <div>
-        <label>First Name</label>
+        <label>Voornaam</label>
+
         <input asp-for="Guest.FirstName" />
         <span asp-validation-for="Guest.FirstName" class="text-danger"></span>
     </div>
     <div>
-        <label>Last Name</label>
+
+        <label>Achternaam</label>
+
         <input asp-for="Guest.LastName" />
         <span asp-validation-for="Guest.LastName" class="text-danger"></span>
     </div>
@@ -29,14 +33,18 @@
         <span asp-validation-for="Guest.Email" class="text-danger"></span>
     </div>
     <div>
-        <label>Phone Number</label>
+
+        <label>Telefoonnummer</label>
+
         <input asp-for="Guest.PhoneNumber" />
         <span asp-validation-for="Guest.PhoneNumber" class="text-danger"></span>
     </div>
 
-    <h2>Reservation Information</h2>
+
+    <h2>Reserveren</h2>
     <div>
-        <label>Room</label>
+        <label>Accommodatie</label>
+
         <select asp-for="Reservation.RoomId" asp-items="Model.RoomList"></select>
         <span asp-validation-for="Reservation.RoomId" class="text-danger"></span>
     </div>
