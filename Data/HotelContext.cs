@@ -12,5 +12,4 @@ namespace Vakantiepark_Area42.Data
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
     }
-
 }
