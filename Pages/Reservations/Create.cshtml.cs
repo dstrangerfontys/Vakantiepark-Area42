@@ -26,13 +26,13 @@ namespace Vakantiepark_Area42.Pages.Reservations
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var today = DateTime.Today;
+            DateTime today = DateTime.Today;
 
-            var reservations = await _context.Reservation
+            List<Reservation> reservations = await _context.Reservation
                 .Include(r => r.Room)
                 .ToListAsync();
 
-            foreach (var reservation in reservations)
+            foreach (Reservation reservation in reservations)
             {
                 if (reservation.CheckOutDate < today)
                 {
