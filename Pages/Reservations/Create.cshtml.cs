@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vakantiepark_Area42.Data;
-using Vakantiepark_Area42.Models;
+using Vakantiepark_Area42.Models.Entities;
 
 namespace Vakantiepark_Area42.Pages.Reservations
 {

@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Vakantiepark_Area42.Models.Entities.Base;
 
-namespace Vakantiepark_Area42.Models
+namespace Vakantiepark_Area42.Models.Entities
 {
-    public class Guest
+    public class Guest : EntityModel
     {
-        public int GuestId { get; set; }
-
         [Required]
         [StringLength(50)]
         public string FirstName { get; set; }

@@ -1,8 +1,9 @@
-﻿namespace Vakantiepark_Area42.Models
+﻿using Vakantiepark_Area42.Models.Entities.Base;
+
+namespace Vakantiepark_Area42.Models.Entities
 {
-    public class Room
+    public class Room : EntityModel
     {
-        public int RoomId { get; set; }
         public string RoomNumber { get; set; }
         public string RoomType { get; set; }
         public decimal PricePerNight { get; set; }
