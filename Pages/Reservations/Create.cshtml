@@ -1,0 +1,86 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Reserveren";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<h1>Reserveren</h1>
+
+<form method="post">
+    <partial name="_ValidationSummary" />
+
+    <h2>Persoonlijke Informatie</h2>
+    <div>
+        <label>Voornaam</label>
+        <input asp-for="Guest.FirstName" />
+        <span asp-validation-for="Guest.FirstName" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Achternaam</label>
+        <input asp-for="Guest.LastName" />
+        <span asp-validation-for="Guest.LastName" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Email</label>
+        <input asp-for="Guest.Email" type="email" />
+        <span asp-validation-for="Guest.Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Telefoonnummer</label>
+        <input asp-for="Guest.PhoneNumber" />
+        <span asp-validation-for="Guest.PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <h2>Reserveren</h2>
+    <div>
+        <label>Accommodatie</label>
+        <select asp-for="Reservation.RoomId" asp-items="Model.RoomList"></select>
+        <span asp-validation-for="Reservation.RoomId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="CheckInDate">Incheckdatum:</label>
+        <input type="text" id="CheckInDate" name="CheckInDate" class="form-control" required placeholder="Selecteer incheckdatum" />
+    </div>
+    <div class="form-group">
+        <label for="CheckOutDate">Uitcheckdatum:</label>
+        <input type="text" id="CheckOutDate" name="CheckOutDate" class="form-control" required placeholder="Selecteer uitcheckdatum" />
+    </div>
+
+    <button type="submit">Boeken</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkInInput = document.getElementById('CheckInDate');
+        const checkOutInput = document.getElementById('CheckOutDate');
+
+        const checkInPicker = flatpickr(checkInInput, {
+            minDate: "today", 
+            dateFormat: "Y-m-d", 
+            disable: [function (date) {
+                
+                return !isAvailable(date);
+            }],
+            onChange: function (selectedDates, dateStr, instance) {
+                checkOutPicker.set('minDate', selectedDates[0]);
+            }
+        });
+
+        const checkOutPicker = flatpickr(checkOutInput, {
+            minDate: "today", 
+            dateFormat: "Y-m-d",
+            disable: [function (date) {
+                return !isAvailable(date);
+            }],
+        });
+
+        function isAvailable(date) {
+            const unavailableDates = ["2025-04-30", "2025-05-01", "2025-05-10"];
+            const dateString = date.toISOString().split('T')[0];
+            return !unavailableDates.includes(dateString);
+        }
+    });
+</script>
