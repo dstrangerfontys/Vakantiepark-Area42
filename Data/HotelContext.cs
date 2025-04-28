@@ -8,8 +8,8 @@ namespace Vakantiepark_Area42.Data
     {
         public HotelContext(DbContextOptions<HotelContext> options) : base(options) { }
 
-        public DbSet<Guest> Guests { get; set; }
-        public DbSet<Room> Rooms { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Guest> Guest { get; set; }
+        public DbSet<Room> Room { get; set; }
+        public DbSet<Reservation> Reservation { get; set; }
     }
 }

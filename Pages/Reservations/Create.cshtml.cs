@@ -28,7 +28,7 @@ namespace Vakantiepark_Area42.Pages.Reservations
         {
             var today = DateTime.Today;
 
-            var reservations = await _context.Reservations
+            var reservations = await _context.Reservation
                 .Include(r => r.Room)
                 .ToListAsync();
 
@@ -36,7 +36,7 @@ namespace Vakantiepark_Area42.Pages.Reservations
             {
                 if (reservation.CheckOutDate < today)
                 {
-                    var room = await _context.Rooms.FirstOrDefaultAsync(r => r.RoomId == reservation.RoomId);
+                    Room room = await _context.Room.FirstOrDefaultAsync(r => r.Id == reservation.RoomId);
                     if (room != null && !room.IsAvailable)
                     {
                         room.IsAvailable = true;
@@ -46,7 +46,7 @@ namespace Vakantiepark_Area42.Pages.Reservations
 
             await _context.SaveChangesAsync();
 
-            RoomList = new SelectList(await _context.Rooms.ToListAsync(), "RoomId", "RoomNumber");
+            RoomList = new SelectList(await _context.Room.ToListAsync(), "RoomId", "RoomNumber");
 
             return Page();
         }
@@ -73,13 +73,13 @@ namespace Vakantiepark_Area42.Pages.Reservations
                 return Page();
             }
 
-            var room = await _context.Rooms.FirstOrDefaultAsync(r => r.RoomId == Reservation.RoomId);
+            Room room = await _context.Room.FirstOrDefaultAsync(r => r.Id == Reservation.RoomId);
 
             if (room != null)
             {
                 room.IsAvailable = false;
 
-                _context.Reservations.Add(Reservation);
+                _context.Reservation.Add(Reservation);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");
