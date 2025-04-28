@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Vakantiepark_Area42.Models;
+using Vakantiepark_Area42.Models.Entities;
 
 
 namespace Vakantiepark_Area42.Data

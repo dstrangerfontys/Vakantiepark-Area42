@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Vakantiepark_Area42.Models.Entities.Base;
 
-namespace Vakantiepark_Area42.Models
+namespace Vakantiepark_Area42.Models.Entities
 {
-    public class Reservation
+    public class Reservation : EntityModel
     {
-        public int ReservationId { get; set; }
-
         [Required]
         public int GuestId { get; set; }
 
