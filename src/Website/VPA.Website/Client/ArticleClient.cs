@@ -16,5 +16,10 @@ namespace VPA.Website.Client
         {
             return GetAsync<List<Article>>($"{EndPoint}", cancellationToken);
         }
+
+        public Task<Article> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return GetAsync<Article>($"{EndPoint}/{id}", cancellationToken);
+        }
     }
 }
