@@ -1,16 +1,12 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
-namespace Vakantiepark_Area42.Pages
+namespace Vakantiepark_Area42.Pages.Store
 {
-    public class IndexModel : PageModel
+    public class LocationsPage : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        public LocationsPage()
         {
-            _logger = logger;
+            //
         }
 
         public void OnGet()
