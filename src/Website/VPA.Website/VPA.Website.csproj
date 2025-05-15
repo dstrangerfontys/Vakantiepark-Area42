@@ -8,7 +8,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\VPA.Abstractions\VPA.Abstractions.csproj" />
     <ProjectReference Include="..\..\Common\VPA.Models\VPA.Models.csproj" />
-    <ProjectReference Include="..\VPA.Website.Models\VPA.Website.Models.csproj" />
   </ItemGroup>
 
 </Project>
