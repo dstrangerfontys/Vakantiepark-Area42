@@ -1,4 +1,4 @@
-﻿using VPA.Website.Models;
+﻿using VPA.Models;
 
 namespace VPA.Website.Client
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VPA.Website.Models
+namespace VPA.Models
 {
     /// <summary>
     /// Represents a room in the system.

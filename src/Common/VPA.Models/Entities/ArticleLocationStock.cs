@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VPA.Website.Models
+namespace VPA.Models
 {
     /// <summary>
     /// Represents the stock of an <see cref="Article"/> in a <see cref="StoreLocation"/>.

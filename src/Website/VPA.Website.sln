@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Website", "VPA.Website\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Abstractions", "..\Common\VPA.Abstractions\VPA.Abstractions.csproj", "{8495F8A8-DD40-F4A2-33A2-2391233CD5E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Website.Models", "VPA.Website.Models\VPA.Website.Models.csproj", "{7C896572-F28C-429C-BA83-1C64C0724D07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Models", "..\Common\VPA.Models\VPA.Models.csproj", "{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{8495F8A8-DD40-F4A2-33A2-2391233CD5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8495F8A8-DD40-F4A2-33A2-2391233CD5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8495F8A8-DD40-F4A2-33A2-2391233CD5E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C896572-F28C-429C-BA83-1C64C0724D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C896572-F28C-429C-BA83-1C64C0724D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C896572-F28C-429C-BA83-1C64C0724D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C896572-F28C-429C-BA83-1C64C0724D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

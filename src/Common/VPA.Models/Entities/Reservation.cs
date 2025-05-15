@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VPA.Website.Models
+namespace VPA.Models
 {
     /// <summary>
     /// Represents a reservation in the system.

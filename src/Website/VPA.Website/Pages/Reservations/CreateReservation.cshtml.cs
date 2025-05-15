@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using VPA.Website.Models;
+using VPA.Models;
 
 namespace VPA.Website.Pages
 {

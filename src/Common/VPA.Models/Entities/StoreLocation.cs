@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VPA.Website.Models
+namespace VPA.Models
 {
     /// <summary>
     /// Represents a location in the store where articles can be placed.

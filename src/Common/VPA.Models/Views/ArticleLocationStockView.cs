@@ -1,4 +1,4 @@
-﻿namespace VPA.Website.Models
+﻿namespace VPA.Models
 {
     public class ArticleLocationStockView : EntityView
     {
