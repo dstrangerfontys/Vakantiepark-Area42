@@ -8,14 +8,14 @@ namespace Vakantiepark_Area42.Models.Entities
     public class ArticleLocationStock : EntityModel
     {
         /// <summary>
-        /// The article that is stored at the location.
+        /// The <see cref="Article"/> that is stored at the location.
         /// </summary>
-        public Article Article { get; set; }
+        public int ArticleId { get; set; }
 
         /// <summary>
-        /// The location where the article is stored.
+        /// The <see cref="StoreLocation"/> where the article is stored.
         /// </summary>
-        public StoreLocation Location { get; set; }
+        public int LocationId { get; set; }
 
         /// <summary>
         /// The amount of stock of the article at the location.
