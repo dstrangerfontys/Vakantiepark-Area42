@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\VPA.Abstractions\VPA.Abstractions.csproj" />
+    <ProjectReference Include="..\VPA.Website.Models\VPA.Website.Models.csproj" />
+  </ItemGroup>
+
+</Project>
