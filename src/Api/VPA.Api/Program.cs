@@ -1,3 +1,6 @@
+using VPA.Api.Repositories;
+using VPA.Api.Services;
+
 namespace VPA.Api
 {
     public class Program
@@ -7,7 +10,10 @@ namespace VPA.Api
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+            builder.Services.AddScoped<ArticleRepository>();
+            builder.Services.AddScoped<ArticleService>();
+
             builder.Services.AddOpenApi();
 
             WebApplication app = builder.Build();
