@@ -47,5 +47,53 @@ namespace VPA.Api.Repositories
 
             return await connection.QuerySingleOrDefaultAsync<TResult>(sql, param);
         }
+
+        protected Task<TResult> QueryFirstAsync<TResult>(string sql, CancellationToken ct = default)
+        {
+            return QueryFirstAsync<TResult>(sql, null, ct);
+        }
+
+        protected async Task<TResult> QueryFirstAsync<TResult>(string sql, object param, CancellationToken ct = default)
+        {
+            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+
+            return await connection.QueryFirstAsync<TResult>(sql, param);
+        }
+
+        protected Task<TResult> QueryFirstOrDefaultAsync<TResult>(string sql, CancellationToken ct = default)
+        {
+            return QueryFirstOrDefaultAsync<TResult>(sql, null, ct);
+        }
+
+        protected async Task<TResult> QueryFirstOrDefaultAsync<TResult>(string sql, object param, CancellationToken ct = default)
+        {
+            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+
+            return await connection.QueryFirstOrDefaultAsync<TResult>(sql, param);
+        }
+
+        protected Task<TResult> ExecuteScalarAsync<TResult>(string sql, CancellationToken ct = default)
+        {
+            return ExecuteScalarAsync<TResult>(sql, null, ct);
+        }
+
+        protected async Task<TResult> ExecuteScalarAsync<TResult>(string sql, object param, CancellationToken ct = default)
+        {
+            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+
+            return await connection.ExecuteScalarAsync<TResult>(sql, param);
+        }
+
+        protected Task<int> ExecuteAsync(string sql, CancellationToken ct = default)
+        {
+            return ExecuteAsync(sql, null, ct);
+        }
+
+        protected async Task<int> ExecuteAsync(string sql, object param, CancellationToken ct = default)
+        {
+            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+
+            return await connection.ExecuteAsync(sql, param);
+        }
     }
 }
