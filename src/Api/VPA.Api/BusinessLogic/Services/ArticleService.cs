@@ -3,7 +3,7 @@ using VPA.Models;
 
 namespace VPA.Api.Services
 {
-    public class ArticleService
+    public class ArticleService : IService
     {
         private readonly ArticleRepository repository;
 

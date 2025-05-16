@@ -4,8 +4,8 @@ namespace VPA.Api.Repositories
 {
     public class ArticleRepository : RepositoryBase
     {
-        public ArticleRepository(DbContext dbContext)
-            : base(dbContext)
+        public ArticleRepository(DataContext dataContext)
+            : base(dataContext)
         {
             //
         }

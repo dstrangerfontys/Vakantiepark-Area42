@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Abstractions", "..\Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Models", "..\Common\VPA.Models\VPA.Models.csproj", "{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPA.Website.Client", "VPA.Website.Client\VPA.Website.Client.csproj", "{47A250DF-1FEE-441C-B065-4FBDF5ED43FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE11B2E-E94E-E5A3-AEDE-392E66D54CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A250DF-1FEE-441C-B065-4FBDF5ED43FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A250DF-1FEE-441C-B065-4FBDF5ED43FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A250DF-1FEE-441C-B065-4FBDF5ED43FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A250DF-1FEE-441C-B065-4FBDF5ED43FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

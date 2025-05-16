@@ -5,12 +5,12 @@ namespace VPA.Api.Repositories
 {
     public class RepositoryBase
     {
-        protected RepositoryBase(DbContext dbContext)
+        protected RepositoryBase(DataContext dataContext)
         {
-            DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            DataContext = dataContext;
         }
 
-        protected DbContext DbContext { get; init; }
+        protected DataContext DataContext { get; init; }
 
         protected Task<IEnumerable<TResult>> QueryAsync<TResult>(string sql, CancellationToken ct = default)
         {
@@ -19,7 +19,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<IEnumerable<TResult>> QueryAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.QueryAsync<TResult>(sql, param);
         }
@@ -31,7 +31,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QuerySingleAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.QuerySingleAsync<TResult>(sql, param);
         }
@@ -43,7 +43,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QuerySingleOrDefaultAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.QuerySingleOrDefaultAsync<TResult>(sql, param);
         }
@@ -55,7 +55,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QueryFirstAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.QueryFirstAsync<TResult>(sql, param);
         }
@@ -67,7 +67,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QueryFirstOrDefaultAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.QueryFirstOrDefaultAsync<TResult>(sql, param);
         }
@@ -79,7 +79,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> ExecuteScalarAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.ExecuteScalarAsync<TResult>(sql, param);
         }
@@ -91,7 +91,7 @@ namespace VPA.Api.Repositories
 
         protected async Task<int> ExecuteAsync(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DbContext.GetConnectionAsync(ct);
+            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
 
             return await connection.ExecuteAsync(sql, param);
         }
