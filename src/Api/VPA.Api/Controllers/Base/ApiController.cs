@@ -6,6 +6,6 @@ namespace VPA.Api.Controllers
     [Route("[controller]")]
     public class ApiController : ControllerBase
     {
-
+        //
     }
 }

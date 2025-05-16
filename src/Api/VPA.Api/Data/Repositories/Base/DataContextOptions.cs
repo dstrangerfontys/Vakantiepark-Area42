@@ -9,6 +9,7 @@ namespace VPA.Api.Repositories
         /// </summary>
         public string ConnectionString { get; set; }
 
+
         /// <summary>
         /// Defines the assemblies to scan for Repositories to inject.
         /// </summary>

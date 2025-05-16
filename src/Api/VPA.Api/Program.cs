@@ -10,9 +10,9 @@ namespace VPA.Api
         {
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
-            builder.Services.AddServices();
             builder.Services.AddDataContext(options => options.ConnectionString = builder.Configuration.GetConnectionString("Default"));
+            builder.Services.AddServices();
+            builder.Services.AddControllers();
 
             builder.Services.AddOpenApi();
 
@@ -49,12 +49,16 @@ namespace VPA.Api
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
-            // Register all services
-            HashSet<Assembly> assemblies = new HashSet<Assembly>();
-            assemblies.Add(typeof(IService).Assembly);
-            foreach (Type clientType in assemblies.SelectMany(a => a.GetExportedTypes()).Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(IService))))
-                services.AddScoped(clientType);
+            services.AddScoped<ArticleService>();
+
             return services;
+
+            // Register all services
+            //HashSet<Assembly> assemblies = new HashSet<Assembly>();
+            //assemblies.Add(typeof(IService).Assembly);
+            //foreach (Type clientType in assemblies.SelectMany(a => a.GetExportedTypes()).Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(IService))))
+            //    services.AddScoped(clientType);
+            //return services;
         }
     }
 }

@@ -27,55 +27,55 @@ namespace VPA.Website.Client
 
         #endregion
 
-        protected async Task<HttpResponseMessage> GetAsync(string requestUri, CancellationToken ct = default)
+        protected async Task<HttpResponseMessage> GetAsync(string url, CancellationToken ct = default)
         {
-            HttpResponseMessage response = await HttpClient.GetAsync(requestUri, ct);
+            HttpResponseMessage response = await HttpClient.GetAsync(url, ct);
             ValidateHttpResponse(response);
             return response;
         }
 
-        protected async Task<TResult> GetAsync<TResult>(string requestUri, CancellationToken ct = default)
+        protected async Task<TResult> GetAsync<TResult>(string url, CancellationToken ct = default)
         {
-            HttpResponseMessage response = await HttpClient.GetAsync(requestUri, ct);
+            HttpResponseMessage response = await HttpClient.GetAsync(url, ct);
             ValidateHttpResponse(response);
             return await GetValueAsync<TResult>(response, ct);
         }
 
-        protected async Task PutAsync<TModel>(string requestUri, TModel model, CancellationToken ct = default)
+        protected async Task PutAsync<TModel>(string url, TModel model, CancellationToken ct = default)
         {
-            using HttpResponseMessage response = await HttpClient.PutAsJsonAsync(requestUri, model, JsonSerializerOptions, ct);
+            using HttpResponseMessage response = await HttpClient.PutAsJsonAsync(url, model, JsonSerializerOptions, ct);
             ValidateHttpResponse(response);
         }
 
-        protected async Task<TResult> PutAsync<TModel, TResult>(string requestUri, TModel model, CancellationToken ct = default)
+        protected async Task<TResult> PutAsync<TModel, TResult>(string url, TModel model, CancellationToken ct = default)
         {
-            using HttpResponseMessage response = await HttpClient.PutAsJsonAsync(requestUri, model, JsonSerializerOptions, ct);
-            ValidateHttpResponse(response);
-            return await GetValueAsync<TResult>(response, ct);
-        }
-
-        protected async Task PostAsync(string requestUri, CancellationToken ct = default)
-        {
-            using HttpResponseMessage response = await HttpClient.PostAsync(requestUri, content: null, ct);
-            ValidateHttpResponse(response);
-        }
-
-        protected async Task PostAsync<TModel>(string requestUri, TModel model, CancellationToken ct = default)
-        {
-            using HttpResponseMessage response = await HttpClient.PostAsJsonAsync(requestUri, model, JsonSerializerOptions, ct);
-            ValidateHttpResponse(response);
-        }
-
-        protected async Task<TResult> PostAsync<TModel, TResult>(string requestUri, TModel model, CancellationToken ct = default)
-        {
-            HttpResponseMessage response = await HttpClient.PostAsJsonAsync(requestUri, model, JsonSerializerOptions, ct);
+            using HttpResponseMessage response = await HttpClient.PutAsJsonAsync(url, model, JsonSerializerOptions, ct);
             ValidateHttpResponse(response);
             return await GetValueAsync<TResult>(response, ct);
         }
 
-        protected async Task DeleteAsync(string requestUri, CancellationToken ct = default)
+        protected async Task PostAsync(string url, CancellationToken ct = default)
         {
-            using HttpResponseMessage response = await HttpClient.DeleteAsync(requestUri, ct);
+            using HttpResponseMessage response = await HttpClient.PostAsync(url, content: null, ct);
+            ValidateHttpResponse(response);
+        }
+
+        protected async Task PostAsync<TModel>(string url, TModel model, CancellationToken ct = default)
+        {
+            using HttpResponseMessage response = await HttpClient.PostAsJsonAsync(url, model, JsonSerializerOptions, ct);
+            ValidateHttpResponse(response);
+        }
+
+        protected async Task<TResult> PostAsync<TModel, TResult>(string url, TModel model, CancellationToken ct = default)
+        {
+            HttpResponseMessage response = await HttpClient.PostAsJsonAsync(url, model, JsonSerializerOptions, ct);
+            ValidateHttpResponse(response);
+            return await GetValueAsync<TResult>(response, ct);
+        }
+
+        protected async Task DeleteAsync(string url, CancellationToken ct = default)
+        {
+            using HttpResponseMessage response = await HttpClient.DeleteAsync(url, ct);
             ValidateHttpResponse(response);
         }
 
@@ -86,7 +86,8 @@ namespace VPA.Website.Client
                 return Task.FromResult<TValue>(default);
             }
 
-            return response.Content.ReadFromJsonAsync<TValue>(JsonSerializerOptions, ct);
+            var x = response.Content.ReadFromJsonAsync<TValue>(JsonSerializerOptions, ct);
+            return x;
         }
 
         protected virtual HttpClient CreateHttpClient()

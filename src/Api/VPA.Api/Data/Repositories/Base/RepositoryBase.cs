@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace VPA.Api.Repositories
 {
@@ -19,9 +19,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<IEnumerable<TResult>> QueryAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.QueryAsync<TResult>(sql, param);
+            return await connection.QueryAsync<TResult>(new CommandDefinition(sql, param, cancellationToken: ct));
         }
 
         protected Task<TResult> QuerySingleAsync<TResult>(string sql, CancellationToken ct = default)
@@ -31,9 +31,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QuerySingleAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.QuerySingleAsync<TResult>(sql, param);
+            return await connection.QuerySingleAsync<TResult>(new CommandDefinition(sql, param, cancellationToken: ct));
         }
 
         protected Task<TResult> QuerySingleOrDefaultAsync<TResult>(string sql, CancellationToken ct = default)
@@ -43,9 +43,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QuerySingleOrDefaultAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.QuerySingleOrDefaultAsync<TResult>(sql, param);
+            return await connection.QuerySingleOrDefaultAsync<TResult>(new CommandDefinition(sql, param, cancellationToken: ct));
         }
 
         protected Task<TResult> QueryFirstAsync<TResult>(string sql, CancellationToken ct = default)
@@ -55,9 +55,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QueryFirstAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.QueryFirstAsync<TResult>(sql, param);
+            return await connection.QueryFirstAsync<TResult>(new CommandDefinition(sql, param, cancellationToken: ct));
         }
 
         protected Task<TResult> QueryFirstOrDefaultAsync<TResult>(string sql, CancellationToken ct = default)
@@ -67,9 +67,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> QueryFirstOrDefaultAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.QueryFirstOrDefaultAsync<TResult>(sql, param);
+            return await connection.QueryFirstOrDefaultAsync<TResult>(new CommandDefinition(sql, param, cancellationToken: ct));
         }
 
         protected Task<TResult> ExecuteScalarAsync<TResult>(string sql, CancellationToken ct = default)
@@ -79,9 +79,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<TResult> ExecuteScalarAsync<TResult>(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.ExecuteScalarAsync<TResult>(sql, param);
+            return await connection.ExecuteScalarAsync<TResult>(new CommandDefinition(sql, param, cancellationToken: ct));
         }
 
         protected Task<int> ExecuteAsync(string sql, CancellationToken ct = default)
@@ -91,9 +91,9 @@ namespace VPA.Api.Repositories
 
         protected async Task<int> ExecuteAsync(string sql, object param, CancellationToken ct = default)
         {
-            await using SqlConnection connection = await DataContext.GetConnectionAsync(ct);
+            await using MySqlConnection connection = DataContext.GetConnection();
 
-            return await connection.ExecuteAsync(sql, param);
+            return await connection.ExecuteAsync(new CommandDefinition(sql, param, cancellationToken: ct));
         }
     }
 }
