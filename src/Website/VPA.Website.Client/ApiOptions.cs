@@ -18,7 +18,7 @@ namespace VPA.Website.Client
         /// <summary>
         /// Options for the JSON serializer.
         /// </summary>
-        public JsonSerializerOptions JsonSerializerOptions { get; set; } = JsonSerializerOptions.Default;
+        public JsonSerializerOptions JsonSerializerOptions { get; set; } = JsonSerializerOptions.Web;
 
         /// <summary>
         /// Defines the assemblies to scan for Api clients to inject.
