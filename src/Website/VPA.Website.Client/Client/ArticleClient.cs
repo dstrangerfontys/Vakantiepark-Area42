@@ -21,5 +21,20 @@ namespace VPA.Website.Client
         {
             return GetAsync<Article>($"{EndPoint}/{id}", cancellationToken);
         }
+
+        public Task CreateAsync(Article article, CancellationToken cancellationToken = default)
+        {
+            return PostAsync($"{EndPoint}", article, cancellationToken);
+        }
+
+        public Task UpdateAsync(Article article, CancellationToken cancellationToken = default)
+        {
+            return PutAsync($"{EndPoint}/{article.Id}", article, cancellationToken);
+        }
+
+        public Task DeleteAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return DeleteAsync($"{EndPoint}/{id}", cancellationToken);
+        }
     }
 }

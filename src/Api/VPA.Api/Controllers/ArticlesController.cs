@@ -29,5 +29,26 @@ namespace VPA.Api.Controllers
         {
             return repository.GetByIdAsync(id, ct);
         }
+
+        [HttpPost]
+        [Route("")]
+        public Task<int> Create([FromBody] Article article, CancellationToken ct = default)
+        {
+            return repository.InsertAsync(article, ct);
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public Task<int> Update([FromRoute] int id, [FromBody] Article article, CancellationToken ct = default)
+        {
+            return repository.UpdateAsync(id, article, ct);
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public Task<int> Delete([FromRoute] int id, CancellationToken ct = default)
+        {
+            return repository.DeleteAsync(id, ct);
+        }
     }
 }

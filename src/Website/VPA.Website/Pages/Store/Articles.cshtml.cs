@@ -13,11 +13,22 @@ namespace VPA.Website.Pages
             this.articleClient = articleClient;
         }
 
+        public List<Article> Articles { get; private set; } = new();
+
         public async Task OnGetAsync(CancellationToken ct = default)
         {
-            // Get the list of articles from the API
-            List<Article> articles = await articleClient.GetAsync(ct);
-            // Check if the response is successful
+            Articles = await articleClient.GetAsync(ct);
+        }
+
+        public async Task CreateAsync(CancellationToken ct = default)
+        {
+            Article article = new Article
+            {
+                Name = "Nieuw artikel",
+                Price = 0,
+            };
+
+            await articleClient.CreateAsync(article, ct);
         }
     }
 }
