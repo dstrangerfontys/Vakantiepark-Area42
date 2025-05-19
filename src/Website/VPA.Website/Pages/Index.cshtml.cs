@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VPA.Website.Pages
 {
-    public class IndexPage : PageModel
+    public class IndexModel : PageModel
     {
-        public IndexPage()
+        public IndexModel()
         {
             //
         }

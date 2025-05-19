@@ -4,11 +4,11 @@ using VPA.Website.Client;
 
 namespace VPA.Website.Pages
 {
-    public class ArticlesPage : PageModel
+    public class ArticlesModel : PageModel
     {
         private readonly ArticleClient articleClient;
 
-        public ArticlesPage(ArticleClient articleClient)
+        public ArticlesModel(ArticleClient articleClient)
         {
             this.articleClient = articleClient;
         }
