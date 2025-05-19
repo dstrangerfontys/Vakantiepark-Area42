@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace VPA.Website.Pages.Store
 {
-    public class ArticleEditPage : PageModel
+    public class ArticleEditModel : PageModel
     {
         public void OnGetAsync(int? id)
         {
