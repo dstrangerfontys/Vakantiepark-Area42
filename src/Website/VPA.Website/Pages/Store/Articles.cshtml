@@ -1,4 +1,5 @@
 ﻿@page
+@using VPA.Models
 @model ArticlesModel
 @{
     ViewData["Title"] = "Artikelen";
@@ -6,13 +7,13 @@
 
 <div class="text-center">
     <h1 class="display-4">Artikelen</h1>
-    <button class="btn btn-success my-3" onclick="@Model.CreateAsync()">Nieuw artikel toevoegen</button>
+    @* <button class="btn btn-success my-3" onclick="@Model.CreateAsync()">Nieuw artikel toevoegen</button> *@
 </div>
 
 @if (Model.Articles != null && Model.Articles.Count > 0)
 {
     <ul class="list-group">
-        @foreach (var article in Model.Articles)
+        @foreach (Article article in @Model.Articles)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <span>@article.Name</span>
@@ -25,3 +26,12 @@ else
 {
     <p>No articles found.</p>
 }
+
+
+<form method="POST">
+    <label for="name">Naam:</label><br>
+    <input type="text" id="name" name="name" placeholder="Nieuw artikel" value="@Model.NewArticle.Name"><br>
+    <label for="price">Prijs:</label><br>
+    <input type="number" step="0.01" id="price" name="price" placeholder="0.00" value="@Model.NewArticle.Price"><br><br>
+    <input type="submit" value="Submit">
+</form>
