@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VPA.Models;
 using VPA.Website.Client;
@@ -6,29 +7,33 @@ namespace VPA.Website.Pages
 {
     public class ArticlesModel : PageModel
     {
-        private readonly ArticleClient ArticleClient;
+        private readonly ArticleClient articleClient;
 
-        public ArticlesModel(ArticleClient ArticleClient)
+        public ArticlesModel(ArticleClient articleClient)
         {
-            this.ArticleClient = ArticleClient;
+            this.articleClient = articleClient;
         }
 
+        [BindProperty]
         public List<Article> Articles { get; private set; } = new();
+
+        [BindProperty]
+        public Article NewArticle { get; set; } = new();
 
         public async Task OnGetAsync(CancellationToken ct = default)
         {
-            Articles = await ArticleClient.GetAsync(ct);
+            await LoadAsync(ct);
         }
 
-        public async Task CreateAsync(CancellationToken ct = default)
+        public async Task OnPostAsync(CancellationToken ct = default)
         {
-            Article Article = new Article
-            {
-                Name = "Nieuw artikel",
-                Price = 0,
-            };
+            await articleClient.CreateAsync(NewArticle, ct);
+            await LoadAsync(ct);
+        }
 
-            await ArticleClient.CreateAsync(Article, ct);
+        private async Task LoadAsync(CancellationToken ct = default)
+        {
+            Articles = await articleClient.GetAsync(ct);
         }
     }
 }
