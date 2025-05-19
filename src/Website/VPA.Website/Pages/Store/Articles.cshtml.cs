@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using VPA.Models;
 using VPA.Website.Client;
 
-namespace VPA.Website.Pages
+namespace VPA.Website.Pages.Store
 {
     public class ArticlesModel : PageModel
     {

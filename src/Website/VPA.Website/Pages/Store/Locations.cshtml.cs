@@ -1,17 +1,39 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using VPA.Models;
+using VPA.Website.Client;
 
-namespace VPA.Website.Pages
+namespace VPA.Website.Pages.Store
 {
     public class LocationsModel : PageModel
     {
-        public LocationsModel()
+        private readonly StoreLocationClient locationClient;
+
+        public LocationsModel(StoreLocationClient locationClient)
         {
-            //
+            this.locationClient = locationClient;
         }
 
-        public void OnGet()
-        {
+        [BindProperty]
+        public List<StoreLocation> Locations { get; private set; } = new();
 
+        [BindProperty]
+        public StoreLocation NewLocation { get; set; } = new();
+
+        public async Task OnGetAsync(CancellationToken ct = default)
+        {
+            await LoadAsync(ct);
+        }
+
+        public async Task OnPostAsync(CancellationToken ct = default)
+        {
+            await locationClient.CreateAsync(NewLocation, ct);
+            await LoadAsync(ct);
+        }
+
+        private async Task LoadAsync(CancellationToken ct = default)
+        {
+            Locations = await locationClient.GetAsync(ct);
         }
     }
 }
