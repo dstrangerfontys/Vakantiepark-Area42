@@ -6,9 +6,9 @@ namespace VPA.Website.Pages
 {
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     [IgnoreAntiforgeryToken]
-    public class ErrorPage : PageModel
+    public class ErrorModel : PageModel
     {
-        public ErrorPage()
+        public ErrorModel()
         {
             //
         }

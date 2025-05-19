@@ -5,9 +5,9 @@ using VPA.Models;
 
 namespace VPA.Website.Pages
 {
-    public class CreateReservationPage : PageModel
+    public class CreateReservationModel : PageModel
     {
-        public CreateReservationPage()
+        public CreateReservationModel()
         {
             //
         }
