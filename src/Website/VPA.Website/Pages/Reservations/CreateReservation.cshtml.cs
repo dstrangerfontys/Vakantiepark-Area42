@@ -24,5 +24,10 @@ namespace VPA.Website.Pages
         {
 
         }
+
+        public async Task OnPostAsync()
+        { 
+            
+        }
     }
 }

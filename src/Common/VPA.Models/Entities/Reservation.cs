@@ -23,12 +23,12 @@ namespace VPA.Models
         /// The check-in date of the reservation.
         /// </summary>
         [Required]
-        public DateOnly CheckInDate { get; set; }
+        public DateTime CheckInDate { get; set; }
 
         /// <summary>
         /// The check-out date of the reservation.
         /// </summary>
         [Required]
-        public DateOnly CheckOutDate { get; set; }
+        public DateTime CheckOutDate { get; set; }
     }
 }

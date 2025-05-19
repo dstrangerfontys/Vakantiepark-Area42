@@ -13,11 +13,17 @@ namespace VPA.Api.BusinessLogic.Services
             this.repository = repository;
         }
 
-        public Task<IEnumerable<Reservation>> GetAsync(CancellationToken ct = default)
+        public async Task<IEnumerable<Reservation>> GetAsync(CancellationToken ct = default)
         {
-            // Hier kunnen we eventueel logica toevoegen
+            // Ophalen van alle reserveringen uit de database
+            var allReservations = await repository.GetAsync(ct);
 
-            return repository.GetAsync(ct);
+            // Toegevoegde logica: enkel reserveringen die nog niet zijn afgelopen
+            var upcomingOrOngoing = allReservations
+                .Where(r => r.CheckOutDate >= DateTime.Today)
+                .OrderBy(r => r.CheckInDate);
+
+            return upcomingOrOngoing;
         }
     }
 }

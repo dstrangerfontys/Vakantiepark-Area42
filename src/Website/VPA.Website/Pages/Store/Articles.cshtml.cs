@@ -4,31 +4,31 @@ using VPA.Website.Client;
 
 namespace VPA.Website.Pages
 {
-    public class ReservationsModel : PageModel
+    public class ArticlesModel : PageModel
     {
-        private readonly ReservationClient ReservationClient;
+        private readonly ArticleClient ArticleClient;
 
-        public ReservationsModel(ReservationClient ReservationClient)
+        public ArticlesModel(ArticleClient ArticleClient)
         {
-            this.ReservationClient = ReservationClient;
+            this.ArticleClient = ArticleClient;
         }
 
-        public List<Reservation> Reservations { get; private set; } = new();
+        public List<Article> Articles { get; private set; } = new();
 
         public async Task OnGetAsync(CancellationToken ct = default)
         {
-            Reservations = await ReservationClient.GetAsync(ct);
+            Articles = await ArticleClient.GetAsync(ct);
         }
 
         public async Task CreateAsync(CancellationToken ct = default)
         {
-            Reservation Reservation = new Reservation
+            Article Article = new Article
             {
                 Name = "Nieuw artikel",
                 Price = 0,
             };
 
-            await ReservationClient.CreateAsync(Reservation, ct);
+            await ArticleClient.CreateAsync(Article, ct);
         }
     }
 }

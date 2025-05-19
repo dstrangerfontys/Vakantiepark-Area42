@@ -7,7 +7,6 @@ namespace VPA.Api.Repositories
         public ReservationRepository(DataContext dataContext)
             : base(dataContext)
         {
-            //
         }
 
         public Task<IEnumerable<Reservation>> GetAsync(CancellationToken ct = default)
@@ -15,8 +14,12 @@ namespace VPA.Api.Repositories
             const string sql =
                 """
                 SELECT
-                    r.*
-                FROM Reservation r
+                    r.ReservationId,
+                    r.GuestId,
+                    r.RoomId,
+                    r.CheckInDate,
+                    r.CheckOutDate,
+                FROM reservations r
                 """;
 
             return QueryAsync<Reservation>(sql, ct);
@@ -27,30 +30,34 @@ namespace VPA.Api.Repositories
             const string sql =
                 """
                 SELECT
-                    r.*
-                FROM Reservation r
-                WHERE a.Id = @Id
+                    r.ReservationId,
+                    r.GuestId,
+                    r.RoomId,
+                    r.CheckInDate,
+                    r.CheckOutDate,
+                FROM reservations r
+                WHERE r.ReservationId = @Id
                 """;
 
-            var param = new
-            {
-                Id = id,
-            };
+            var param = new { Id = id };
 
             return QuerySingleOrDefaultAsync<Reservation>(sql, param, ct);
         }
 
         public Task<int> InsertAsync(Reservation reservation, CancellationToken ct = default)
         {
-            const string sql = """
-                INSERT INTO Reservation (Name, Price)
-                VALUES (@Name, @Price)
+            const string sql =
+                """
+                INSERT INTO reservations (GuestId, RoomId, CheckInDate, CheckOutDate)
+                VALUES (@GuestId, @RoomId, @CheckInDate, @CheckOutDate)
                 """;
 
             var param = new
             {
-                Name = reservation.Name,
-                Price = reservation.Price,
+                reservation.GuestId,
+                reservation.RoomId,
+                reservation.CheckInDate,
+                reservation.CheckOutDate,
             };
 
             return ExecuteAsync(sql, param, ct);
@@ -58,18 +65,23 @@ namespace VPA.Api.Repositories
 
         public Task<int> UpdateAsync(int id, Reservation reservation, CancellationToken ct = default)
         {
-            const string sql = """
-                UPDATE Reservation
-                SET Name = @Name,
-                    Price = @Price
-                WHERE Id = @Id
+            const string sql =
+                """
+                UPDATE reservations
+                SET GuestId = @GuestId,
+                    RoomId = @RoomId,
+                    CheckInDate = @CheckInDate,
+                    CheckOutDate = @CheckOutDate,
+                WHERE ReservationId = @Id
                 """;
 
             var param = new
             {
                 Id = id,
-                Name = reservation.Name,
-                Price = reservation.Price,
+                reservation.GuestId,
+                reservation.RoomId,
+                reservation.CheckInDate,
+                reservation.CheckOutDate,
             };
 
             return ExecuteAsync(sql, param, ct);
@@ -77,15 +89,13 @@ namespace VPA.Api.Repositories
 
         public Task<int> DeleteAsync(int id, CancellationToken ct = default)
         {
-            const string sql = """
-                DELETE FROM Reservation
-                WHERE Id = @Id
+            const string sql =
+                """
+                DELETE FROM reservations
+                WHERE ReservationId = @Id
                 """;
 
-            var param = new
-            {
-                Id = id,
-            };
+            var param = new { Id = id };
 
             return ExecuteAsync(sql, param, ct);
         }

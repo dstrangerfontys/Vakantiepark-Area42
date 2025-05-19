@@ -2,34 +2,34 @@
 
 namespace VPA.Website.Client
 {
-    public class ReservationClient : ApiClient
+    public class ArticleClient : ApiClient
     {
-        private const string EndPoint = "Reservations";
+        private const string EndPoint = "Articles";
 
-        public ReservationClient(IHttpClientFactory httpClientFactory, ApiOptions options)
+        public ArticleClient(IHttpClientFactory httpClientFactory, ApiOptions options)
             : base(httpClientFactory, options)
         {
             //
         }
 
-        public Task<List<Reservation>> GetAsync(CancellationToken cancellationToken = default)
+        public Task<List<Article>> GetAsync(CancellationToken cancellationToken = default)
         {
-            return GetAsync<List<Reservation>>($"{EndPoint}", cancellationToken);
+            return GetAsync<List<Article>>($"{EndPoint}", cancellationToken);
         }
 
-        public Task<Reservation> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public Task<Article> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return GetAsync<Reservation>($"{EndPoint}/{id}", cancellationToken);
+            return GetAsync<Article>($"{EndPoint}/{id}", cancellationToken);
         }
 
-        public Task CreateAsync(Reservation Reservation, CancellationToken cancellationToken = default)
+        public Task CreateAsync(Article Article, CancellationToken cancellationToken = default)
         {
-            return PostAsync($"{EndPoint}", Reservation, cancellationToken);
+            return PostAsync($"{EndPoint}", Article, cancellationToken);
         }
 
-        public Task UpdateAsync(Reservation Reservation, CancellationToken cancellationToken = default)
+        public Task UpdateAsync(Article Article, CancellationToken cancellationToken = default)
         {
-            return PutAsync($"{EndPoint}/{Reservation.Id}", Reservation, cancellationToken);
+            return PutAsync($"{EndPoint}/{Article.Id}", Article, cancellationToken);
         }
 
         public Task DeleteAsync(int id, CancellationToken cancellationToken = default)

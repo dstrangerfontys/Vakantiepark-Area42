@@ -11,7 +11,7 @@ namespace VPA.Api.Controllers
         private readonly ArticleRepository repository;
         private readonly Articleservice service;
 
-        public ArticlesController(ArticleRepository repository, Reservationservice service)
+        public ArticlesController(ArticleRepository repository, Articleservice service)
         {
             this.repository = repository;
             this.service = service;

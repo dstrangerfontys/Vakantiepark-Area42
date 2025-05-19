@@ -5,7 +5,7 @@ namespace VPA.Models
     /// <summary>
     /// Represents an Reservation in the store.
     /// </summary>
-    public class Reservation : EntityModel
+    public class Article : EntityModel
     {
         /// <summary>
         /// The name of the Reservation.
