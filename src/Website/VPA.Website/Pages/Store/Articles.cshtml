@@ -1,5 +1,5 @@
 ﻿@page
-@model ArticlesModel
+@model ReservationsModel
 @{
     ViewData["Title"] = "Artikelen";
 }
@@ -9,19 +9,19 @@
     <button class="btn btn-success my-3" onclick="@Model.CreateAsync()">Nieuw artikel toevoegen</button>
 </div>
 
-@if (Model.Articles != null && Model.Articles.Count > 0)
+@if (Model.Reservations != null && Model.Reservations.Count > 0)
 {
     <ul class="list-group">
-        @foreach (var article in Model.Articles)
+        @foreach (var Reservation in Model.Reservations)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>@article.Name</span>
-                <span class="badge bg-primary rounded-pill">€ @article.Price.ToString("0.00")</span>
+                <span>@Reservation.Name</span>
+                <span class="badge bg-primary rounded-pill">€ @Reservation.Price.ToString("0.00")</span>
             </li>
         }
     </ul>
 }
 else
 {
-    <p>No articles found.</p>
+    <p>No Reservations found.</p>
 }

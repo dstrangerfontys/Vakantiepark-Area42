@@ -1,8 +1,8 @@
 ﻿namespace VPA.Models
 {
-    public class ArticleLocationStockView : EntityView
+    public class ReservationLocationStockView : EntityView
     {
-        public string ArticleName { get; set; }
+        public string ReservationName { get; set; }
         public string LocationName { get; set; }
         public int Amount { get; set; }
     }

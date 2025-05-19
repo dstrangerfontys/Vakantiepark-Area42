@@ -6,12 +6,12 @@ using VPA.Models;
 
 namespace VPA.Api.Controllers
 {
-    public class ArticleController : ApiController
+    public class ReservationsController : ApiController
     {
-        private readonly ArticleRepository repository;
-        private readonly Articleservice service;
+        private readonly ReservationRepository repository;
+        private readonly Reservationservice service;
 
-        public ArticlesController(ArticleRepository repository, Reservationservice service)
+        public ReservationsController(ReservationRepository repository, Reservationservice service)
         {
             this.repository = repository;
             this.service = service;
@@ -19,30 +19,30 @@ namespace VPA.Api.Controllers
 
         [HttpGet]
         [Route("")]
-        public Task<IEnumerable<Article>> Get(CancellationToken ct = default)
+        public Task<IEnumerable<Reservation>> Get(CancellationToken ct = default)
         {
             return service.GetAsync(ct);
         }
 
         [HttpGet]
         [Route("{id:int}")]
-        public Task<Article> GetById([FromRoute] int id, CancellationToken ct = default)
+        public Task<Reservation> GetById([FromRoute] int id, CancellationToken ct = default)
         {
             return repository.GetByIdAsync(id, ct);
         }
 
         [HttpPost]
         [Route("")]
-        public Task<int> Create([FromBody] Article article, CancellationToken ct = default)
+        public Task<int> Create([FromBody] Reservation reservation, CancellationToken ct = default)
         {
-            return repository.InsertAsync(article, ct);
+            return repository.InsertAsync(reservation, ct);
         }
 
         [HttpPut]
         [Route("{id:int}")]
-        public Task<int> Update([FromRoute] int id, [FromBody] Article article, CancellationToken ct = default)
+        public Task<int> Update([FromRoute] int id, [FromBody] Reservation reservation, CancellationToken ct = default)
         {
-            return repository.UpdateAsync(id, article, ct);
+            return repository.UpdateAsync(id, reservation, ct);
         }
 
         [HttpDelete]

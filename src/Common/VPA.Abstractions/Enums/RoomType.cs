@@ -6,13 +6,18 @@
     public enum RoomType
     {
         /// <summary>
-        /// A small alone standing house
+        /// A campingfield spot
         /// </summary>
-        Cottage,
+        Campingfield,
 
         /// <summary>
         /// A single apartment in a building
         /// </summary>
-        Apartment,
+        Appartment,
+
+        /// <summary>
+        /// A classic bungalow
+        /// </summary>
+        Bungalow,
     }
 }

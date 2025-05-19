@@ -3,7 +3,7 @@
 namespace VPA.Models
 {
     /// <summary>
-    /// Represents a location in the store where articles can be placed.
+    /// Represents a location in the store where Reservations can be placed.
     /// </summary>
     public class StoreLocation : EntityModel
     {

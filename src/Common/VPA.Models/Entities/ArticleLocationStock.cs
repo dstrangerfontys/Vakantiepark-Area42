@@ -3,24 +3,24 @@
 namespace VPA.Models
 {
     /// <summary>
-    /// Represents the stock of an <see cref="Article"/> in a <see cref="StoreLocation"/>.
+    /// Represents the stock of an <see cref="Reservation"/> in a <see cref="StoreLocation"/>.
     /// </summary>
-    public class ArticleLocationStock : EntityModel
+    public class ReservationLocationStock : EntityModel
     {
         /// <summary>
-        /// The <see cref="Article"/> that is located in the store location.
+        /// The <see cref="Reservation"/> that is located in the store location.
         /// </summary>
         [Required]
-        public int ArticleId { get; set; }
+        public int ReservationId { get; set; }
 
         /// <summary>
-        /// The <see cref="StoreLocation"/> where the article is located.
+        /// The <see cref="StoreLocation"/> where the Reservation is located.
         /// </summary>
         [Required]
         public int LocationId { get; set; }
 
         /// <summary>
-        /// The amount of stock of the article in the location.
+        /// The amount of stock of the Reservation in the location.
         /// </summary>
         [Required]
         public int Amount { get; set; }

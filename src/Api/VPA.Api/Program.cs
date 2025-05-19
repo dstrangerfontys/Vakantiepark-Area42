@@ -1,4 +1,5 @@
 using System.Reflection;
+using VPA.Api.BusinessLogic.Services;
 using VPA.Api.Repositories;
 using VPA.Api.Services;
 
@@ -49,7 +50,7 @@ namespace VPA.Api
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ArticleService>();
+            services.AddScoped<Reservationservice>();
 
             return services;
 

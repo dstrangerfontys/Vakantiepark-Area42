@@ -3,11 +3,11 @@ using VPA.Models;
 
 namespace VPA.Api.Services
 {
-    public class ArticleService : IService
+    public class Articleservice : IService
     {
         private readonly ArticleRepository repository;
 
-        public ArticleService(ArticleRepository repository)
+        public Articleservice(ArticleRepository repository)
         {
             this.repository = repository;
         }

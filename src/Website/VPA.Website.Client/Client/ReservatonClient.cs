@@ -22,14 +22,14 @@ namespace VPA.Website.Client
             return GetAsync<Reservation>($"{EndPoint}/{id}", cancellationToken);
         }
 
-        public Task CreateAsync(Reservation Reservation, CancellationToken cancellationToken = default)
+        public Task CreateAsync(Reservation reservation, CancellationToken cancellationToken = default)
         {
-            return PostAsync($"{EndPoint}", Reservation, cancellationToken);
+            return PostAsync($"{EndPoint}", reservation, cancellationToken);
         }
 
-        public Task UpdateAsync(Reservation Reservation, CancellationToken cancellationToken = default)
+        public Task UpdateAsync(Reservation reservation, CancellationToken cancellationToken = default)
         {
-            return PutAsync($"{EndPoint}/{Reservation.Id}", Reservation, cancellationToken);
+            return PutAsync($"{EndPoint}/{reservation.Id}", reservation, cancellationToken);
         }
 
         public Task DeleteAsync(int id, CancellationToken cancellationToken = default)
